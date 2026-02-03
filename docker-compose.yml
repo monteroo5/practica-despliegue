@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # App 1: Monitorización (Puerto 8081)
+  app1-monitor:
+    image: louislam/uptime-kuma:1
+    container_name: app1_monitor
+    volumes:
+      - uptime-kuma:/app/data
+    ports:
+      - "8081:3001"
+    restart: always
+
+  # App 2: Dashboard (Puerto 8082)
+  app2-dashboard:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: app2_dashboard
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+      - heimdall_config:/config
+    ports:
+      - "8082:80"
+    restart: always
+
+volumes:
+  uptime-kuma:
+  heimdall_config:
