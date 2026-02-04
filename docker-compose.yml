@@ -25,6 +25,14 @@ services:
       - "8082:80"
     restart: always
 
+  # App 3: App personalizada PHP (Puerto 8083)
+  app3-custom:
+    build: ./app3
+    container_name: app3_php
+    ports:
+      - "8083:80"
+    restart: always
+
 volumes:
   uptime-kuma:
   heimdall_config:
