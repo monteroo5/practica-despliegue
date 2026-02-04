@@ -33,6 +33,14 @@ services:
       - "8083:80"
     restart: always
 
+  # App 4: Python Flask conectada a DB remota (Puerto 8084)
+  app4:
+    build: ./app4
+    container_name: app4_python
+    ports:
+      - "8084:80"
+    restart: always
+
 volumes:
   uptime-kuma:
   heimdall_config:
